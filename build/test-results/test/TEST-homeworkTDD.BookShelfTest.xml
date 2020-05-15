@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="homeworkTDD.BookShelfTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-05-15T15:01:12" hostname="WIN-S5MBRP6MD60" time="0.027">
+  <properties/>
+  <testcase name="shouldThrowExceptionRemovingFirstBookFromEmptyShelf()" classname="homeworkTDD.BookShelfTest" time="0.011"/>
+  <testcase name="shouldThrowExceptionCreatingBookWithInvalidISBN()" classname="homeworkTDD.BookShelfTest" time="0.001"/>
+  <testcase name="shouldRemoveBookFromShelfByBookId()" classname="homeworkTDD.BookShelfTest" time="0.001"/>
+  <testcase name="shouldCreateBookShelfOfGivenSize()" classname="homeworkTDD.BookShelfTest" time="0.001"/>
+  <testcase name="shouldThrowExceptionRemovingBookNotPresentOnTheShelf()" classname="homeworkTDD.BookShelfTest" time="0.001"/>
+  <testcase name="shouldCreateValidBook()" classname="homeworkTDD.BookShelfTest" time="0.001"/>
+  <testcase name="shouldThrowExceptionForAddingBookToTheFullShelf()" classname="homeworkTDD.BookShelfTest" time="0.001"/>
+  <testcase name="shouldAddBookToTheShelf()" classname="homeworkTDD.BookShelfTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

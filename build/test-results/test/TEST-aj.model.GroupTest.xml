@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="aj.model.GroupTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-05-15T12:13:17" hostname="LAP-PL-TT-FIDO2" time="0.051">
-  <properties/>
-  <testcase name="shouldAddUserToTheGroup()" classname="aj.model.GroupTest" time="0.051"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

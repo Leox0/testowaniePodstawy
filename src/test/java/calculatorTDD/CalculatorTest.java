@@ -16,7 +16,7 @@ class CalculatorTest {
     @CsvSource({  //podane paramety w csv //mogą byc też enum, tablice etc. // @MethodSource - najwięcej możliwości, możliwość mieszania typów itp
             "1,1,2",
             "3,5,8",
-            "6,6,5"
+            "6,6,5" //błędne założenie
     })
     void shouldAddTwoNumbers(Double a, Double b, Double expectedResult) {
         //given

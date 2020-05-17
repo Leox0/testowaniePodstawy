@@ -33,10 +33,11 @@ public class Group {
         if (majorityRestriction && user.getAge() < LEGAL_AGE) {
             throw new GroupOperationException(USER_NEEDS_TO_BE_OF_LEGAL_AGE);
         }
-        users.add(user);
+
         if (getGroupSize() == 0) {
             admin = user;
         }
+        users.add(user);
     }
 
     public void removeUser(User user) throws GroupOperationException {
@@ -51,6 +52,10 @@ public class Group {
             throw new GroupOperationException(NEW_ADMIN_MUST_BE_DIFFERENT_USER);
         }
         admin = newAdmin;
+    }
+
+    public User getAdmin() {
+        return admin;
     }
 
     public String getName() {

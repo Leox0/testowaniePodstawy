@@ -1,17 +1,23 @@
 package aj.model;
 
+import org.assertj.core.api.AssertionsForClassTypes;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 
 import static aj.model.Group.*;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class GroupTest {
 
 
     @Test
+    @Disabled
     public void shouldAddUserCorrectly() throws GroupOperationException {
         //given
         User user = new User("Adam", "Adamowicz", 25, Sex.MALE);
@@ -28,6 +34,22 @@ class GroupTest {
         assertEquals(expectedGroupSize, group.getGroupSize());
         User firstUser = group.getUsers().get(0);
         assertEquals(user, firstUser);
+
+    }
+    @Test
+    public void shouldAddUserCorrectlyAssertJ() throws GroupOperationException {
+        //given
+        User user = new User("Adam", "Adamowicz", 25, Sex.MALE);
+        Group group = new Group("Adamowe");
+
+        int initialGroupSize = group.getGroupSize();
+        int expectedGroupSize = 1;
+
+        //when
+        group.addUser(user);
+
+        //then
+        assertThat(group.getUsers()).containsOnly(user);
 
     }
 
@@ -96,7 +118,7 @@ class GroupTest {
     }
 
     @Test
-    @Disabled // wyłączamy, bo poniżej jest jupiter
+    @Disabled // wyłączamy, bo poniżej jest AssertJ
     public void shouldRemoveUserCorrectly() throws GroupOperationException {
         //given
         User user = new User("Adam", "Adamowicz", 25, Sex.MALE);
@@ -119,7 +141,7 @@ class GroupTest {
     }
 
     @Test
-    public void shouldRemoveUserCorrectlyJupiter() throws GroupOperationException {
+    public void shouldRemoveUserCorrectlyAssertJ() throws GroupOperationException {
         //given
         User user = new User("Adam", "Adamowicz", 25, Sex.MALE);
         User user2 = new User("Karol", "Adamowicz", 25, Sex.MALE);
@@ -128,16 +150,14 @@ class GroupTest {
         group.addUser(user);
         group.addUser(user2);
 
-        int expectedGroupSize = 1;
-        int userNotPresent = -1;
-
         //when
         group.removeUser(user2);
 
         //then
-        assertEquals(expectedGroupSize, group.getGroupSize());
-        assertEquals(user, group.getUsers().get(0));
-        assertEquals(userNotPresent, group.getUsers().indexOf(user2));
+        assertThat(user2).isNotIn(group.getUsers());
+        assertThat(group.getUsers()).containsOnly(user);
+
+
     }
 
     @Test
@@ -193,6 +213,12 @@ class GroupTest {
         assertEquals(user, group.getAdmin());
         assertEquals(initialAdmin, user);
 
+    }
+
+    @ParameterizedTest
+    @EnumSource(Sex.class)
+    void enumTest(Sex sex){
+        System.out.println(sex);
     }
 
 

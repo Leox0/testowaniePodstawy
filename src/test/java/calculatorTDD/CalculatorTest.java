@@ -31,6 +31,7 @@ class CalculatorTest {
 
     @Test
     void shouldSubtractTwoNumbers() {
+        //given
         Double a = 5.0;
         Double b = 2.0;
         Double expectedResult = 3.0;
@@ -44,6 +45,7 @@ class CalculatorTest {
 
     @Test
     void shouldPowTheNumber() {
+        //given
         Double a = 5.0;
         Integer b = 2;
         Double expectedResult = 25.0;
@@ -57,6 +59,7 @@ class CalculatorTest {
 
     @Test
     void shouldSqrtTheNumber() {
+        //given
         Double a = 9.0;
         Double expectedResult = 3.0;
 

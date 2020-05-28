@@ -7,8 +7,17 @@ import static org.junit.jupiter.api.Assertions.*;
 class BookShelfTest {
 
     @Test
-    void shouldCreateValidBook(){
-        //TODO implement this
+    void shouldCreateValidBook() {
+        //given
+        int exprectedIdCounter = 1;
+        //when
+        try {
+            Book book = new Book("Tytul", "Autor", "007462542X");
+        } catch (BookCreationException e) {
+            System.out.println(e.getMessage());
+        }
+        //then
+        assertEquals(exprectedIdCounter, Book.getIdCounter());
 
     }
 

@@ -104,21 +104,44 @@ class BookShelfTest {
         //then
         assertThat(bookShelf.getBooks()).containsOnly(validBook1);
         BookShelfOperationException bookShelfOperationException = assertThrows(BookShelfOperationException.class, executable);
-        assertEquals(bookShelf.SHELF_IS_FULL, bookShelfOperationException.getMessage());
+        assertEquals(BookShelf.SHELF_IS_FULL, bookShelfOperationException.getMessage());
 
     }
 
 
     @Test
-    void shouldThrowExceptionAddingTheseSameBookTwice() {
-        //TODO implement this
+    void shouldThrowExceptionAddingTheseSameBookTwice() throws BookCreationException, BookShelfOperationException {
+        //given
+        Book validBook1 = createValidBook();
+        BookShelf bookShelf = new BookShelf(2);
+        bookShelf.addBook(validBook1);
+
+        //when
+        Executable executable = () -> bookShelf.addBook(validBook1);
+
+        //then
+        assertThat(bookShelf.getBooks()).containsOnly(validBook1);
+        BookShelfOperationException bookShelfOperationException = assertThrows(BookShelfOperationException.class, executable);
+        assertThat(bookShelfOperationException).hasMessage(BookShelf.BOOK_ALREADY_ON_SHELF);
+
 
     }
 
     @Test
-    void shouldThrowExceptionRemovingBookNotPresentOnTheShelf() {
-        //TODO implement this
+    void shouldThrowExceptionRemovingBookNotPresentOnTheShelf() throws BookCreationException, BookShelfOperationException {
+        //given
+        Book validBook1 = createValidBook();
+        BookShelf bookShelf = new BookShelf(2);
+        bookShelf.addBook(validBook1);
+        Long bookToRemoveId = 1L;
 
+        //when
+        Executable executable = () -> bookShelf.removeBook(bookToRemoveId);
+
+        //then
+        assertThat(bookShelf.getBooks()).containsOnly(validBook1);
+        BookShelfOperationException bookShelfOperationException = assertThrows(BookShelfOperationException.class, executable);
+        assertThat(bookShelfOperationException).hasMessage(BookShelf.CANNOT_REMOVE_BOOK_NOT_EXISTS);
     }
 
     private Book createValidBook() throws BookCreationException {

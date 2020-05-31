@@ -131,9 +131,9 @@ class BookShelfTest {
     void shouldThrowExceptionRemovingBookNotPresentOnTheShelf() throws BookCreationException, BookShelfOperationException {
         //given
         Book validBook1 = createValidBook();
-        BookShelf bookShelf = new BookShelf(2);
+        BookShelf bookShelf = new BookShelf(1);
         bookShelf.addBook(validBook1);
-        Long bookToRemoveId = 1L;
+        Long bookToRemoveId = 5L;
 
         //when
         Executable executable = () -> bookShelf.removeBook(bookToRemoveId);
@@ -142,6 +142,7 @@ class BookShelfTest {
         assertThat(bookShelf.getBooks()).containsOnly(validBook1);
         BookShelfOperationException bookShelfOperationException = assertThrows(BookShelfOperationException.class, executable);
         assertThat(bookShelfOperationException).hasMessage(BookShelf.CANNOT_REMOVE_BOOK_NOT_EXISTS);
+
     }
 
     private Book createValidBook() throws BookCreationException {
